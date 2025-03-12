@@ -33,10 +33,10 @@ const ItineraryPlanner: React.FC = () => {
       departureLocation: "",
       adults: 0,
       children: 0,
-      childAge: [],
+      childAge: "",
       mealPlan: "",
       packageNights: 0,
-      vehicle: [],
+      vehicle: "",
       specialRequests: "",
     },
     itineraryDetails: [],
@@ -116,7 +116,9 @@ const ItineraryPlanner: React.FC = () => {
 
   return (
     <div style={{ textAlign: "center" }}>
-      <h2 className="text-5xl text-red-900">Itinerary Planner</h2>
+      <h2 className="text-5xl font-semibold p-10 bg-amber-300">
+        Itinerary Planner
+      </h2>
 
       <TravellerDetailsForm
         travellerDetails={itineraryData.travellerDetails}
@@ -124,22 +126,29 @@ const ItineraryPlanner: React.FC = () => {
       />
 
       <ItineraryForm
+        onAddDay={handleAddDay}
         itineraryDetails={itineraryData.itineraryDetails}
         onChange={handleItineraryChange}
         onAddDestination={handleAddDestination}
       />
-
-      <button onClick={handleAddDay} style={{ marginTop: "20px" }}>
-        Add New Day
-      </button>
-
-      <div style={{ marginTop: "20px" }}>
-        <PDFDownloadLink
-          document={<ItineraryPDF itinerary={itineraryData} />}
-          fileName="itinerary.pdf"
+      <div className="pb-20">
+        <button
+          onClick={handleAddDay}
+          className="mt-20 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-10"
         >
-          {({ loading }) => (loading ? "Loading document..." : "Download PDF")}
-        </PDFDownloadLink>
+          Add New Day
+        </button>
+
+        <button className="mt-20  bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          <PDFDownloadLink
+            document={<ItineraryPDF itinerary={itineraryData} />}
+            fileName="itinerary.pdf"
+          >
+            {({ loading }) =>
+              loading ? "Loading document..." : "Download PDF"
+            }
+          </PDFDownloadLink>
+        </button>
       </div>
     </div>
   );
