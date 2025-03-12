@@ -1,9 +1,9 @@
 // src/types/Itinerary.ts
-export interface Vehicle {
-  name: string;
-  count: number;
-  type: string;
-}
+// export interface Vehicle {
+//   name: string;
+//   count: number;
+//   type: string;
+// }
 
 export interface TravellerDetails {
   guestName: string;
@@ -13,10 +13,10 @@ export interface TravellerDetails {
   departureLocation: string;
   adults: number;
   children: number;
-  childAge: number[];
+  childAge: string;
   mealPlan: string;
   packageNights: number;
-  vehicle: Vehicle[];
+  vehicle: string;
   specialRequests: string;
 }
 
